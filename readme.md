@@ -61,8 +61,9 @@ RECOMMENDED: Add these lines to your `.bashrc` file (or whatever you are using) 
 
 
 ## Dataset download
-1. Download the [dataset](https://drive.google.com/drive/folders/1uDLjtfIY0mDbwTPdvL0uWSRZHatJGjsS?usp=sharing). This contains the official challenge data (Dataset142), Bartleys data (Dataset181), our 555 additional cases (Dataset188), our corrected annotations for 142 and 181 (Dataset186) as well as a merged and final dataset that we should be using here (Dataset189). All data was already resized to have the longest edge be 512 pixels and the Motors are encoded as spheres in instance segmentation maps. Don't worry about the many datasets. They link to each other and nothing is duplicated.
-2. Extract the MIC_DKFZ_data.7z file into your `$nnUNet_raw` folder so that the DatasetsXXX folders are directly located in there.
+The Google Drive download we originally provided here (official challenge data as Dataset142, Bartleys data as Dataset181, our 555 additional cases as Dataset188, our corrected annotations for 142 and 181 as Dataset186 and the merged final Dataset189) is no longer available. Please use the post-challenge release instead: the training annotations of the competition (from the hosts and two participating teams, including parts of our annotations) are published on the CryoET Data Portal as [deposition 10332](https://cryoetdataportal.czscience.com/depositions/10332), together with the corresponding tomograms, under CC0.
+
+To train with the commands below, convert the release into an nnU-Net dataset (Dataset189 in the commands): resize each tomogram so that its longest edge is 512 pixels and encode each motor as a sphere with its own instance ID. The scripts in [nnunetv2/dataset_conversion/kaggle_byu](nnunetv2/dataset_conversion/kaggle_byu) (`official_data_to_nnunet.py`, `bartleys_data/`, `additional_external_data/`, `merge_datasets.py`) show how we did this for the original data sources and can serve as a template. See also [Raw dataset download](#raw-dataset-download) below.
 
 ## nnUNet experiment planning and preprocessing
 Run the following commands (anywhere on your system)
